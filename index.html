@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook - M03</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+         img.innovation-image {
+            max-width: 400px; /* Adjust as needed */
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                // Assuming activity-2 (Innovación) is less critical than Brain Gym/Challenge
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                // Removing Innovación and shortening Brain Gym/Challenge implicitly by time pressure
+                 document.getElementById('activity-2').style.display = 'none';
+                 // We might need more aggressive hiding for 40 min, but let's start here.
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - M03</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('pregunta_activadora')">
+        <div class="title">🎉 Actividad 1: Pregunta Activadora ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">La herramienta correcta para el trabajo correcto... ¿También en IA?</div>
+    </div>
+    <div id="pregunta_activadora" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Pregunta Activadora".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Buenos días, Genios! Para empezar a calentar motores hoy, piensen en esto: si tuvieran que construir una silla de madera, ¿usarían solo un martillo para todo? ¿Para cortar la madera, para lijarla, para unir las piezas? Probablemente no, ¿verdad?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 3 "Intercambio de Ideas: Herramientas y Tareas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Exacto. Usarían diferentes herramientas: una sierra para cortar, una lija para suavizar, un martillo y clavos (o pegamento y prensas) para unir. ¿Por qué es tan importante elegir la herramienta adecuada para cada parte del proceso? Compartan sus ideas. ¿Qué pasaría si intentaran cortar madera con un martillo?... ¿O clavar un clavo con una lija?... Sería ineficiente, frustrante y el resultado probablemente no sería bueno. ¿Alguien más tiene alguna reflexión sobre por qué elegimos herramientas específicas para tareas específicas?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "I Can Statement: El Horizonte de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Precisamente esa idea de 'la herramienta correcta para el trabajo correcto' es crucial en el mundo de la IA. No todas las IA son iguales. Al finalizar esta misión, ustedes podrán decir: 'Yo puedo diferenciar los principales modelos de IA, entender sus características clave y elegir el más adecuado según la tarea que necesito realizar.' Vamos a llenar su caja de herramientas de IA."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día → Lluvia de ideas express ⏰ Tiempo: 8 minutos</div>
+        <div class="subtitle">¿Cómo saber qué IA es la 'mejor'? Comparando en la Arena.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 5 "Desafío: La Jungla de Modelos de IA".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Continuamos con nuestro tema. Como vimos, hay muchas 'herramientas' de IA. Cada semana parece salir un modelo nuevo: GPT-5, Claude 4, Llama 10, Gemini Ultra Pro Max... ¡Es una locura! El desafío es: con tantas opciones, ¿cómo podemos saber cuál es realmente *mejor* para una tarea específica? ¿Cómo podemos comparar de forma objetiva si un modelo es más creativo, más preciso o más rápido que otro, más allá de lo que dice su publicidad?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (4 minutos):</strong> Proyectar Diapositiva 6 "Lluvia de Ideas Express: ¿Cómo Comparar IA?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Activemos la mente colectiva. Durante los próximos 4 minutos, piensen: ¿Qué métodos podríamos usar para comparar diferentes modelos de IA? ¿Cómo podríamos medir su rendimiento de forma justa? ¿Qué criterios usarían? ¿Podríamos hacer 'competencias' entre IAs? ¡Lancen sus ideas! No hay respuestas incorrectas. Las tres ideas más ingeniosas o prácticas tendrán su recompensa. ¡El cronómetro está corriendo!... [Nombre], ¿alguna idea?... Interesante, ¿pruebas estandarizadas?... ¿Alguien más?... ¿Una 'cata a ciegas' de IA? ¡Me gusta! Sigan, sigan..."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2.1 (0 minutos):</strong> Proyectar Diapositiva 7 "Cronómetro - 4 Minutos: Generación de Ideas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (2 minutos):</strong> Proyectar Diapositiva 8 "Innovación: Hugging Face Chat Arena - La Batalla de los Chatbots". Mostrar imagen de Chat Arena.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Excelentes propuestas! Han tocado puntos clave. Y precisamente, una de las soluciones más interesantes a este desafío es la 'Chat Arena' de Hugging Face. Imaginen un coliseo romano, pero en lugar de gladiadores, ¡tenemos chatbots! En la Chat Arena, tú le haces una pregunta a dos modelos de IA *anónimos*. Ambos te responden, y tú votas por la respuesta que te pareció mejor, sin saber qué modelo la generó. Miles de personas hacen esto, y así se crea un ranking basado en preferencias humanas reales, no solo en benchmarks técnicos. Es una *innovación de plataforma* y de *proceso*. Crea una nueva forma (plataforma) de evaluar y comparar (proceso) modelos de IA de manera colaborativa y abierta. ¡Felicidades a los creadores de las tres ideas más destacadas! Recojan su Mon-e al final."<br><img src="https://huggingface.co/spaces/lmsys/chatbot-arena/resolve/main/arena_banner_horizontal.png" alt="Hugging Face Chat Arena" class="innovation-image"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 20 minutos</div>
+        <div class="subtitle">Descifrando el ADN de los Modelos de IA: Características y Comparativas.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1.5 minutos):</strong> Proyectar Diapositiva 9 "1. ¿Qué es un Modelo de IA?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Muy bien, Genios. Ya sabemos que hay diferentes 'herramientas' de IA, pero ¿qué son exactamente estos 'modelos'? Piensen en un modelo de IA como el 'cerebro' entrenado detrás de la herramienta. Es un sistema complejo, generalmente basado en redes neuronales, que ha 'aprendido' patrones a partir de cantidades masivas de datos. No es un programa con reglas fijas como una calculadora. Es más como un aprendiz muy rápido y con una memoria gigantesca. Imaginen que quieren un sistema que reconozca gatos en fotos. El 'modelo' sería ese cerebro artificial que, después de ver millones de fotos de gatos y no gatos, aprendió a identificar las características clave de un gato. Es el motor que impulsa la inteligencia."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (3 minutos):</strong> Proyectar Diapositiva 10 "2. Características Clave: El ADN del Modelo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para elegir la herramienta correcta, necesitamos entender sus características, su 'ADN'. Veamos las más importantes:
+                    <ul>
+                        <li><strong>Casos de Uso:</strong> ¿Para qué es bueno este modelo? Como las herramientas: un martillo es para clavar, no para cortar. Algunos modelos son geniales conversando, otros codificando, otros analizando imágenes.</li>
+                        <li><strong>Costo:</strong> ¿Cuánto cuesta usarlo? Algunos son gratis (con límites), otros tienen suscripción (como Netflix), y otros cobran por uso (como la electricidad, pagas por lo que consumes).</li>
+                        <li><strong>Límites (Rate Limits):</strong> ¿Cuántas veces puedes usarlo en un periodo de tiempo? Imaginen que su teléfono tiene un límite de mensajes por hora. Los modelos también tienen límites para evitar abusos.</li>
+                        <li><strong>Tokens y Ventana de Contexto:</strong> Esto es crucial. Los 'tokens' son como las piezas de palabras que el modelo procesa. La 'ventana de contexto' es como su memoria a corto plazo: cuántos tokens puede 'recordar' de la conversación o del texto que le das. Una ventana grande permite conversaciones más largas y análisis de documentos extensos. Imaginen hablar con alguien que olvida lo que dijeron hace dos frases... frustrante, ¿verdad?</li>
+                        <li><strong>Funciones Adicionales:</strong> ¿Tiene 'superpoderes'? Algunos modelos pueden hacer 'razonamiento' paso a paso (Chain-of-Thought), buscar información actualizada en internet ('Deep Search'), o entender y generar imágenes y audio además de texto (multimodalidad). Son como accesorios para su herramienta."</li>
+                    </ul>"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 11 "3. Los Grandes Jugadores: La Carrera de la IA".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Detrás de estos modelos hay empresas gigantes y laboratorios de investigación compitiendo ferozmente. Tenemos a OpenAI (los creadores de ChatGPT), Google (con Gemini), Anthropic (con Claude), Meta (con Llama, un fuerte jugador open-source), xAI de Elon Musk (con Grok), DeepSeek (con modelos open-source también), y muchas otras startups y universidades. Esta competencia es buena para nosotros, porque impulsa la innovación y hace que los modelos mejoren a una velocidad increíble. Cada uno tiene su filosofía, sus fortalezas y sus debilidades."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (4 minutos):</strong> Proyectar Diapositiva 12 "4. Comparativa de Modelos: Pros y Contras".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, pongamos algunos modelos populares bajo la lupa (basado en información reciente, ¡esto cambia rápido!):
+                    <ul>
+                        <li><strong>Familia GPT-4 (OpenAI, ej. GPT-4o):</strong> <strong>Pros:</strong> Excelente en conversación natural, capta humor y emociones, muy bueno para escribir textos creativos o profesionales, ahora es multimodal (entiende imágenes, audio). <strong>Contras:</strong> Aunque ha mejorado mucho, a veces puede 'inventar' información (alucinaciones), su razonamiento complejo aún puede fallar, puede ser costoso para uso intensivo.</li>
+                        <li><strong>Familia Claude 3 (Anthropic, ej. Opus, Sonnet, Haiku):</strong> <strong>Pros:</strong> Muy bueno escribiendo y resumiendo textos largos (gran ventana de contexto), fuerte en tareas de codificación, a menudo considerado más 'ético' o seguro. Opus compite directamente con los mejores. Sonnet es un buen balance calidad/precio. Haiku es rápido y barato. <strong>Contras:</strong> Puede ser 'demasiado' cauteloso y negarse a responder a temas sensibles, algunos usuarios reportan límites de uso inesperados.</li>
+                        <li><strong>Familia Gemini (Google, ej. 1.5 Pro):</strong> <strong>Pros:</strong> Excelente integración con el ecosistema Google, capacidades multimodales muy potentes (entiende videos largos), ventana de contexto gigantesca en 1.5 Pro, bueno recuperando información específica. <strong>Contras:</strong> A veces puede sentirse menos 'creativo' o conversacional que GPT, su rendimiento puede variar según la tarea.</li>
+                         <li><strong>Familia Llama 3 (Meta, Open Source):</strong> <strong>Pros:</strong> El modelo open-source más potente actualmente, excelente en razonamiento y codificación, muy rápido, la comunidad puede adaptarlo y mejorarlo. <strong>Contras:</strong> Al ser open-source, requiere más conocimientos técnicos para implementarlo uno mismo (aunque hay servicios que lo facilitan), puede tener menos 'filtros' de seguridad que los modelos cerrados.</li>
+                        <li><strong>Grok (xAI):</strong> <strong>Pros:</strong> Acceso a información en tiempo real de X (Twitter), tono a menudo sarcástico y sin filtros. <strong>Contras:</strong> Precisamente su falta de filtros puede ser un problema para uso profesional, puede generar respuestas inapropiadas o sesgadas, su rendimiento en tareas complejas es generalmente inferior a los líderes.</li>
+                    </ul>
+                    *Nota: DeepSeek y otros modelos open-source son interesantes para desarrolladores, pero pueden requerir más configuración y precaución.*"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 5 (2 minutos):</strong> Proyectar Diapositiva 13 "5. ¿Qué Modelo para Qué Tarea?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Entonces, ¿cuál elegir? Depende de la tarea:
+                    <ul>
+                        <li><strong>Necesitas una conversación fluida, ayuda para escribir un email importante o generar ideas creativas:</strong> GPT-4o es una excelente opción.</li>
+                        <li><strong>Tienes que analizar un documento muy largo, escribir código o necesitas un modelo muy seguro:</strong> Claude 3 (Opus para máxima calidad, Sonnet para balance).</li>
+                        <li><strong>Quieres analizar un video, necesitas buscar información dentro de un archivo enorme o estás muy metido en el ecosistema Google:</strong> Gemini 1.5 Pro.</li>
+                         <li><strong>Eres desarrollador, quieres experimentar, necesitas buen rendimiento en código y razonamiento, y prefieres open source:</strong> Llama 3.</li>
+                        <li><strong>Buscas información súper reciente de X o quieres respuestas sin filtro (con precaución):</strong> Grok.</li>
+                    </ul>
+                    Como ven, no hay un 'mejor' modelo para todo. Es como elegir entre un coche deportivo para velocidad, una camioneta para carga o un vehículo eléctrico por eficiencia."</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 6 (2 minutos):</strong> Proyectar Diapositiva 14 "6. Ideas para Demos Rápidas".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Para que vean estas diferencias en acción, podríamos hacer (o pueden probar ustedes mismos):
+                    <ul>
+                        <li>Pedirle a GPT-4o que reescriba un párrafo con un tono más empático.</li>
+                        <li>Darle a Claude 3 Sonnet un bloque de código y pedirle que explique qué hace o encuentre errores.</li>
+                        <li>Subir un video corto a Gemini 1.5 Pro y pedirle que describa una acción específica que ocurre.</li>
+                        <li>Pedirle a Llama 3 que resuelva un problema de lógica o genere diferentes variaciones de un código.</li>
+                        <li>Preguntarle a Grok sobre las últimas noticias de un tema específico en X.</li>
+                     </ul>
+                    Estas pequeñas pruebas les darán una idea intuitiva de las fortalezas de cada uno."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 7 (1.5 minutos):</strong> Proyectar Diapositiva 15 "7. La Velocidad del Rayo: La Evolución Constante".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Lo que les acabo de contar sobre estos modelos... podría estar obsoleto la próxima semana. Así de rápido se mueve esto. Cada mes, a veces cada semana, salen versiones nuevas, modelos diferentes, con capacidades mejoradas. Es como si los smartphones pasaran de una generación a otra en cuestión de días. Mantenerse al día es un desafío constante, pero también emocionante."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 8 (1.5 minutos):</strong> Proyectar Diapositiva 16 "8. La Curiosidad del Ingeniero de Prompts".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Y aquí es donde entra la mentalidad de un buen Ingeniero de Prompts. No basta con aprender a usar un solo modelo y quedarse ahí. Hay que ser curiosos, hay que explorar. Cuando sale un modelo nuevo, hay que probarlo, ver para qué es bueno, compararlo con los que ya conocemos. Es como un chef que prueba nuevos ingredientes, nuevas técnicas. No puedes crear platos increíbles si solo usas sal y pimienta. Necesitas experimentar."</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 9 (2 minutos):</strong> Proyectar Diapositiva 17 "9. La Palabra del Día: ACTUALIZACIÓN".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Si hay una palabra que define el trabajo con IA, es *ACTUALIZACIÓN*. No es suficiente leer un artículo o ver un video sobre un modelo. Hay que *probarlo* en sus propios proyectos, en sus flujos de trabajo. Ver si realmente funciona para *ustedes*. ¿Se adapta a su estilo? ¿Resuelve sus problemas específicos? Ser un buen Ingeniero de Prompts implica estar en un estado de actualización constante. Pero no se asusten, ahora que conocen las características clave (ventana de contexto, tokens, etc.), les será mucho más fácil evaluar rápidamente cada nuevo modelo que aparezca. Ya tienen el mapa para navegar esta jungla."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- -------------------------------------------------Corte por extensión --------------------------------------------------------- -->
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🚀 Actividad 4: Challenge ⏰ Tiempo: 14 minutos</div>
+        <div class="subtitle">¡Explícamelo como si tuviera 8 años! Comparando IA.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 18 "Título del Challenge: IA para Niños (de 8 años)".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Llegó el Challenge, Genios! Ya vimos que hay muchos modelos de IA y que cada uno tiene sus 'poderes'. Ahora, vamos a poner a prueba su habilidad para explicar conceptos complejos de forma sencilla. Su misión: hacer que Gemini les explique las diferencias entre dos modelos de IA como si se lo estuvieran contando a un niño de 8 años."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 19 "Instrucciones y Prompt Base".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Van a trabajar individualmente. Usarán Gemini (asegúrense de tener acceso). Elijan dos modelos de IA de los que hablamos hoy (o pueden investigar otros si quieren). Por ejemplo, GPT-4o y Claude 3 Sonnet. El objetivo es crear un prompt para que Gemini explique las diferencias clave entre esos dos modelos, pero con un lenguaje súper simple, con analogías fáciles de entender, como si le hablaran a alguien de 8 años. Aquí tienen un prompt base que pueden adaptar:"<br><br>
+                <code>"Actúa como un profesor muy paciente y divertido que le explica a un niño de 8 años la diferencia entre [Modelo A] y [Modelo B]. Usa analogías muy sencillas, como si fueran juguetes o herramientas diferentes, para que el niño entienda para qué sirve mejor cada uno. Asegúrate de que el lenguaje sea muy claro y fácil de seguir."</code>
+                </td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 20 "Ejemplo de Adaptación".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Por ejemplo, podrían adaptar el prompt así: 'Actúa como un maestro de primaria buena onda explicándole a un niño de 8 años la diferencia entre GPT-4o y Claude 3 Sonnet. Compara GPT-4o con una caja de LEGO súper grande y creativa para inventar historias, y a Claude 3 Sonnet con un robot muy bueno para construir cosas siguiendo instrucciones, como armar un mueble complicado. Usa palabras que un niño de 8 años entienda.'"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (6 minutos):</strong> Proyectar Diapositiva 21 "¡A Simplificar!".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Tienen 6 minutos para experimentar con sus prompts en Gemini. Prueben diferentes modelos, diferentes analogías. Si la primera respuesta de Gemini no es lo suficientemente simple, díganle: 'Explícamelo aún más fácil' o 'Usa una analogía diferente'. Refinen su prompt hasta que obtengan una explicación que realmente un niño de 8 años podría entender. ¡El objetivo es la claridad y la simplicidad!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4.1 (0 minutos):</strong> Proyectar Diapositiva 22 "Cronómetro: 6 minutos."</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A."</td>
+             </tr>
+             <tr>
+                <td><strong>PASO 5 (4 minutos):</strong> Proyectar Diapositiva 23 "Compartiendo Analogías".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Tiempo! Ahora, quiero escuchar algunas de las analogías que Gemini les dio. ¿Quién quiere compartir la explicación que más le gustó o le pareció más clara? No tienen que leer toda la respuesta, solo la parte de la analogía o la explicación clave. Vamos a ver qué tan bien logramos que la IA simplificara estos conceptos. (Pedir a 3-4 voluntarios que compartan)."</td>
+            </tr>
+              <tr>
+                <td><strong>PASO 6 (1 minuto):</strong> Proyectar Diapositiva 24 "Reflexión del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Excelente trabajo. ¿Qué aprendieron al hacer este ejercicio? ¿Fue fácil conseguir que la IA simplificara la información? ¿Qué tan importante creen que es poder explicar conceptos complejos de forma sencilla, no solo para niños, sino en general? Este ejercicio no solo les ayuda a entender mejor los modelos, sino que también practica una habilidad clave: la comunicación efectiva."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 25 "I Can Statement: Challenge Superado".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Volvamos a nuestro objetivo: 'Yo puedo diferenciar los principales modelos de IA, entender sus características clave y elegir el más adecuado según la tarea que necesito realizar.' Con lo que aprendieron en el Brain Gym y este ejercicio de simplificación y comparación, han dado un gran paso para dominar esta habilidad. ¡Felicidades!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 8 (0.5 minutos):</strong> Proyectar Diapositiva 26 "You've got Mon-e: Recompensa por el Esfuerzo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Su habilidad para simplificar lo complejo merece una recompensa. ¡Aquí tienen su Mon-e!"</td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('mission_notes')">
+        <div class="title">📝 Actividad 5: Mission Notes ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Consolidando la Caja de Herramientas de IA.</div>
+    </div>
+    <div id="mission_notes" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 27 "Elaboración de Mission Notes".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para cerrar la misión de hoy, dediquen estos últimos minutos a sus 'Mission Notes'. Anoten los modelos de IA que les parecieron más interesantes, las características clave que deben recordar (tokens, ventana de contexto...), y cualquier pregunta que aún tengan. ¿Qué modelo probarían primero para un proyecto personal? ¿Qué característica les parece más revolucionaria? Estas notas son su 'mapa' personal para navegar el mundo de los modelos de IA. Recuerden la palabra clave: ¡ACTUALIZACIÓN! ¡Nos vemos en la próxima misión, donde empezaremos a construir nuestros propios prompts!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
